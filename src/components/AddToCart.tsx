@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 import { productDataType } from '../utils/productData'
 import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
+import { itemDataType } from '../utils/itemData'
+import { addItemInCart } from '../cartlogic/CartLogic'
 
-const AddToCart: React.FC<{ singleProduct: productDataType | {} }> = ({
-  singleProduct,
-}) => {
-  const { addToCart } = useCartContext()
-  // need the number of stock here as well after setting up in productData array
-  const { id, slug } = { ...singleProduct }
+const AddToCart: React.FC<{ singleProduct: itemDataType []}> = ({singleProduct}) => {
+  //const { addToCart } = useCartContext()
+  //need the number of stock here as well after setting up in productData array
+  //const { id ,} = { ...singleProduct }
   const [amount, setAmount] = useState(1)
 
   // if there's stock variable, add logic to allow adding the amount === stock
@@ -33,7 +33,7 @@ const AddToCart: React.FC<{ singleProduct: productDataType | {} }> = ({
         <Link
           to='/cart'
           className='btn'
-          onClick={() => addToCart(id, slug, amount, singleProduct)}
+          onClick={() => addItemInCart(singleProduct[0]?.id,singleProduct[0]?.title,amount,singleProduct[0]?.price,singleProduct[0]?.image)}
         >
           add to cart
         </Link>

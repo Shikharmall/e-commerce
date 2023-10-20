@@ -1,19 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useCartContext } from '../context/cart_context'
-// import { useUserContext } from '../context/user_context'
-import { formatPrice } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 
 const CartTotals = () => {
-  const { totalAmount } = useCartContext()
+  const totallll = localStorage.getItem('totalll');
+  const totallll1 = totallll ? JSON.parse(totallll) : "";
 
   return (
     <Wrapper>
       <div>
         <article>
           <h5>
-            subtotal : <span>{formatPrice(totalAmount)}</span>
+            subtotal : <span>₹ {totallll}</span>
           </h5>
           <p>
             shipping fee: <span>FREE!</span>
@@ -21,7 +19,7 @@ const CartTotals = () => {
           <hr />
           {/* Supposed to be totalAmount + shipping fee, but there's no shipping fee at the moment */}
           <h4>
-            order total: <span>{formatPrice(totalAmount)}</span>
+            order total: <span>₹ {totallll}</span>
           </h4>
         </article>
         <CheckoutButton />

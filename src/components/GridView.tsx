@@ -5,8 +5,6 @@ import { itemDataType } from '../utils/itemData'
 
 const GridView: React.FC<{ filteredProducts: itemDataType[] }> = ({ filteredProducts }) => {
 
-  console.log( filteredProducts);
-
   return (
     <Wrapper>
       <div className='products-container'>

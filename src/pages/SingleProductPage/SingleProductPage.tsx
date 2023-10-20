@@ -8,7 +8,6 @@ import { SingleProductContent } from './SingleProductContent'
 import ErrorPage from '../ErrorPage'
 import { getProduct } from '../../api/AllProducts'
 import { itemDataType } from '../../utils/itemData'
-import { BsTypeH1 } from 'react-icons/bs'
 
 const SingleProductPage = () => {
 
@@ -30,7 +29,6 @@ const SingleProductPage = () => {
       console.log(error);
     }
   };
-  console.log(oneProduct);
 
   useEffect(()=>{
     if (typeof id === 'string') { 
@@ -48,7 +46,6 @@ const SingleProductPage = () => {
     return (
       <Wrapper>
         <PageHero title={oneProduct[0]?.title?.substring(0,15)+"..."} isSingleProduct />
-        
         <div className='section section-center page'>
           <BackToProductsButton />
           <div className='product-center'>
@@ -90,6 +87,12 @@ const Wrapper = styled.main`
     span {
       font-weight: 700;
     }
+  }
+
+  .star{
+    color: gold;
+    display: flex;
+    font-size: 25px;
   }
 
   @media (min-width: 992px) {

@@ -5,17 +5,25 @@ import { Link } from 'react-router-dom'
 import CartColumns from './CartColumns'
 import CartItem from './CartItem'
 import CartTotals from './CartTotals'
+import { cartDataType } from '../utils/cartData'
 
 const CartContent = () => {
-  const { cart, clearCart } = useCartContext()
+  //const { cart, clearCart } = useCartContext()
+  const storedValuecarttt = localStorage.getItem('carttt');
+  const storedValuecarttt1 = storedValuecarttt ? JSON.parse(storedValuecarttt) : [];
   return (
     <Wrapper className='section section-center'>
       <CartColumns />
-      {cart.map(cartItem => {
-        return <CartItem key={cartItem.id} cartItem={cartItem} />
-      })}
+      {
+        (storedValuecarttt1 || storedValuecarttt1.length > 0)?
+          storedValuecarttt1.map((cartItem: cartDataType ,index: number) => {
+            return <CartItem key={index} cartItem={cartItem} />
+          })
+        :
+        null
+      }
       <hr />
-      <Buttons clearCart={clearCart} />
+      {/*<Buttons clearCart={clearCart} />*/}
       <CartTotals />
     </Wrapper>
   )

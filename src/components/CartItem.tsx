@@ -5,44 +5,45 @@ import AmountButtons from './AmountButtons'
 import { FaTrash } from 'react-icons/fa'
 import { cartType, useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
+import { cartDataType } from '../utils/cartData'
 
-const CartItem: React.FC<{ cartItem: cartType }> = ({ cartItem }) => {
-  const { id, image, name, price, amount, slug } = cartItem
+const CartItem: React.FC<{ cartItem: cartDataType }> = ({ cartItem }) => {
+  //const { id, image, title, price, amount /*, slug */} = cartItem
 
-  const { removeItem, toggleAmount } = useCartContext()
+  console.log(cartItem.price);
+
+  //const { removeItem, toggleAmount } = useCartContext()
 
   const increase: () => void = () => {
-    toggleAmount(id, 'inc')
+    //toggleAmount(id, 'inc')
   }
   const decrease: () => void = () => {
-    toggleAmount(id, 'dec')
+    //toggleAmount(id, 'dec')
   }
 
   return (
     <Wrapper>
       {/* item column */}
       <div className='title'>
-        <Link to={`/products/${slug}`}>
-          <img src={image} alt={name} />
+        <Link to={`/products/${cartItem.id}`}>
+          <img src={cartItem.image} alt={cartItem.title} />
         </Link>
         <div>
-          <h5 className='name'>{name}</h5>
-
-
-          <h5 className='price-small'>{formatPrice(price)}</h5>
+          <h5 className='name'>{cartItem.title.substring(0,20)+" ...."}</h5>
         </div>
       </div>
       {/* price column */}
-      <div className='price'>{formatPrice(price)}</div>
+      <div className='price'>₹ {cartItem.price.toString()}</div>
       {/* quantity column */}
-      <AmountButtons amount={amount} increase={increase} decrease={decrease} />
+      <AmountButtons amount={Number(cartItem.amount)} increase={increase} decrease={decrease} />
       {/* subtotal column */}
-      <h5 className='subtotal'>{formatPrice(price * amount)}</h5>
+      <h5 className='subtotal'>₹ {(Number(cartItem.price) * Number(cartItem.amount))}</h5>
+
       {/* remove icon */}
       <button
         type='button'
         className='remove-btn'
-        onClick={() => removeItem(id)}
+        //onClick={() => removeItem(id)}
       >
         <FaTrash />
       </button>
