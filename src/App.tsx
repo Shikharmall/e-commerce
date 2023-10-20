@@ -13,8 +13,6 @@ import {
   SuccessfulPayment,
 } from './pages'
 
-//import HomePage from './pages/HomePage'
-
 function App() {
   return (
 
@@ -25,7 +23,7 @@ function App() {
           <Route path='/shipping' element={<Shipping/>}/>
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/products' element={<Products/>}/>
-          <Route path='/products/:slug' element={<SuccessfulPayment/>}/>
+          <Route path='/products/:id' element={<SingleProduct />}/>
           <Route path='/checkout' element={<Checkout/>}/>
           <Route path='/successful_payment' element={<SuccessfulPayment/>}/>
           <Route path='*' element={<Error />}/>

@@ -1,47 +1,59 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState} from 'react'
 import { useParams } from 'react-router-dom'
-import { useProductsContext } from '../../context/products_context'
+//import { useProductsContext } from '../../context/products_context'
 import { ProductImages, Loading, PageHero } from '../../components'
 import styled from 'styled-components'
 import { BackToProductsButton } from './BackToProductsButton'
 import { SingleProductContent } from './SingleProductContent'
 import ErrorPage from '../ErrorPage'
+import { getProduct } from '../../api/AllProducts'
+import { itemDataType } from '../../utils/itemData'
+import { BsTypeH1 } from 'react-icons/bs'
 
 const SingleProductPage = () => {
-  const { slug } = useParams<{ slug: string }>()
-  const {
-    singleProduct,
-    fetchSingleProduct,
-    singleProductLoading,
-    singleProductError,
-    allProducts,
-  } = useProductsContext()
 
-  const { name, images } = { ...singleProduct }
+  const { id } = useParams<{ id: string }>();
+  const [oneProduct,setOneProduct] = useState<itemDataType[]>([]);
+  const [loading11,setLaoading11] = useState(false);
 
-  // when page refreshes, allProducts changes from [] to an array of data from API
-  // so if state of allProducts changes, run this useEffect too for the case of page refresh
-  useEffect(() => {
-    if (slug) {
-      fetchSingleProduct(slug)
+  const getoneproduct = async(productid: string) => {
+
+    setLaoading11(true);
+
+    try {
+
+      const prod = await getProduct(productid);
+      setOneProduct([...oneProduct,prod]);
+      setLaoading11(false);
+
+    } catch (error) { 
+      console.log(error);
     }
-    // eslint-disable-next-line
-  }, [slug, allProducts])
+  };
+  console.log(oneProduct);
 
-  if (singleProductLoading) {
+  useEffect(()=>{
+    if (typeof id === 'string') { 
+      getoneproduct(id);
+    }
+  },[id]);
+
+  if (loading11) {
     return <Loading />
   }
-  if (singleProductError) {
+
+  if (/*singleProductError*/0) {
     return <ErrorPage />
   } else {
     return (
       <Wrapper>
-        <PageHero title={name} isSingleProduct />
+        <PageHero title={oneProduct[0]?.title?.substring(0,15)+"..."} isSingleProduct />
+        
         <div className='section section-center page'>
           <BackToProductsButton />
           <div className='product-center'>
-            <ProductImages images={images} />
-            <SingleProductContent />
+            <ProductImages images={oneProduct[0]?.image} />
+            <SingleProductContent oneProduct1={oneProduct}/>
           </div>
         </div>
       </Wrapper>

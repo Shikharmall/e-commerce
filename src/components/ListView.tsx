@@ -3,25 +3,27 @@ import styled from 'styled-components'
 import { formatPrice } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 import { productDataType } from '../utils/productData'
+import { itemDataType } from '../utils/itemData'
 
-const ListView: React.FC<{ filteredProducts: productDataType[] }> = ({
+const ListView: React.FC<{ filteredProducts: itemDataType[] }> = ({
   filteredProducts,
 }) => {
   return (
     <Wrapper>
       {filteredProducts.map(product => {
-        const { slug, images, name, price, itemDescription } = product
+        //const { slug, images, name, price, itemDescription } = product
+        const {id,title,price,description,category,image,rating} = product
         return (
-          <article key={slug}>
-            <Link to={`/products/${slug}`}>
-              <img src={images[0]} alt={name} />
+          <article key={id}>
+            <Link to={`/products/${id}`}>
+              <img src={image} alt="product-image" />
             </Link>
 
             <div>
-              <h4>{name}</h4>
-              <h5>{formatPrice(price)}</h5>
-              <p>{itemDescription.substring(0, 150)}...</p>
-              <Link to={`/products/${slug}`} className='btn'>
+              <h4>{title}</h4>
+              <h5>Rs. {price}</h5>
+              {/*<p>{description.substring(0, 150)}...</p>*/}
+              <Link to={`/products/${id}`} className='btn'>
                 Details
               </Link>
             </div>

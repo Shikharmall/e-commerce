@@ -1,17 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import Product from './Product'
-import { productDataType } from '../utils/productData'
+import { itemDataType } from '../utils/itemData'
 
-const GridView: React.FC<{ filteredProducts: productDataType[] }> = ({
-  filteredProducts,
-}) => {
+const GridView: React.FC<{ filteredProducts: itemDataType[] }> = ({ filteredProducts }) => {
+
+  console.log( filteredProducts);
+
   return (
     <Wrapper>
       <div className='products-container'>
-        {filteredProducts.map(product => {
-          return <Product key={product.id} product={product} />
-        })}
+        {
+          filteredProducts.map((product,index) => (
+            <Product key={index} product={product} />
+          ))
+        }
       </div>
     </Wrapper>
   )

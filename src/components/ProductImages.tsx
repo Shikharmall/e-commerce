@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const ProductImages: React.FC<{ images: string[] | undefined }> = ({
-  images = [],
+const ProductImages: React.FC<{ images: string /*| undefined*/ }> = ({
+  //images = [],
+  images
 }) => {
-  const [imageIndex, setImageIndex] = useState(0)
+  const [imageIndex, setImageIndex] = useState(0);
+  const [imagess, setImagess] = useState(['1','2']);
 
   return (
     <Wrapper>
-      <img src={images[imageIndex]} alt='main' className='main' />
+      <img src={images} alt='main' className='main' />
       <div className='gallery'>
-        {images.map((image, index) => {
+        {imagess.map((image, index) => {
           return (
             <img
-              key={image}
-              src={image}
+              key={images}
+              src={images}
               alt=''
               onClick={() => setImageIndex(index)}
               className={index===imageIndex? 'active': undefined}

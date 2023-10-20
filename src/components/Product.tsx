@@ -4,22 +4,23 @@ import { formatPrice } from '../utils/helpers'
 import { FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { productDataType } from '../utils/productData'
+import { itemDataType } from '../utils/itemData'
 
-const Product: React.FC<{ product: productDataType }> = ({ product }) => {
-  const { images, name, price, slug } = product
-  const image = images[0]
+const Product: React.FC<{ product: itemDataType}> = ({ product }) => {
+  const { image , title, price, id } = product
+  
   return (
     <Wrapper>
       <div className='container'>
-        <Link to={`/products/${slug}`}>
-          <img src={image} alt={name} />
+        <Link to={`/products/${id}`}>
+          <img src={image} alt={title}/>
           <div className='link'>
             <FaSearch />
           </div>
         </Link>
       </div>
       <footer>
-        <h5>{name}</h5>
+        <h5>{title}</h5>
         <p>{formatPrice(price)}</p>
       </footer>
     </Wrapper>

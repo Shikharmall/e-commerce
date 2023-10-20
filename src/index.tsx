@@ -11,10 +11,10 @@ import './index.css'
         <App />
       </CartProvider>
     </FilterProvider>
-</ProductsProvider>*/}
+  </ProductsProvider>*/}
 
 ReactDOM.render(
- 
+  
   <App />
   ,
   document.getElementById('root')

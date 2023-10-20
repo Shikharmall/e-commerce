@@ -9,7 +9,8 @@ export const FeaturedProductsCards = () => {
     <div className='section-center featured'>
       {featuredProducts &&
         featuredProducts.map(product => (
-          <Product key={product.id} product={product} />
+          //<Product key={product.id} product={product} />
+          <h1>hello</h1>
         ))}
     </div>
   )
