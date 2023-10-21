@@ -2,9 +2,8 @@
 
 ## Demo of this app:
 
-![demo](./src/assets/demopage.png)
 
-### Or Go to the live site and try it for yourself [here](https://lucent-semolina-3b2012.netlify.app/)
+### This project is hosted on netifly and click on the given link to view it [Link Of Project](https://lucent-semolina-3b2012.netlify.app/)
 
 ## What is this project about?
 
