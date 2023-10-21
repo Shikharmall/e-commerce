@@ -1,16 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { CheckoutForm } from './CheckoutForm'
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js'
-
-// Type supposed to be: Promise<Stripe | null>,
-// but dunno where to install the required type so use any instead
-//let promise: any
-//
-//if (process.env.REACT_APP_STRIPE_PUBLIC_KEY) {
-//  promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
-//}
 
 const StripeCheckout = () => {
   return (

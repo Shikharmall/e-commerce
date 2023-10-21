@@ -34,7 +34,7 @@ const CartButtons = () => {
         Cart
         <span className='cart-container'>
           <FaShoppingCart />
-          <span className='cart-value'>{totalitemm}</span>
+          {/*<span className='cart-value'>{totalitemm}</span>*/}
         </span>
       </Link>
     </Wrapper>
