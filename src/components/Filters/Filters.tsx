@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from 'react'
 import styled from 'styled-components'
-import { FiltersButton } from './FiltersButton'
 import { itemDataType } from '../../utils/itemData'
 import { getAllCategory } from '../../api/AllProducts'
 
@@ -29,10 +28,6 @@ const Filters: React.FC<{ searchbynamefunc1: (value: string) => Promise<void>,se
 
   return (
     <Wrapper>
-      <FiltersButton
-        showFilters={showFilters}
-        setShowFilters={setShowFilters}
-      />
 
           <div>
             <form onSubmit={e => e.preventDefault()}>
