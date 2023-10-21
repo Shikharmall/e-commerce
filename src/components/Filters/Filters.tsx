@@ -1,15 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import styled from 'styled-components'
-import { SearchFilters } from './SearchFilters'
-import { CategoryFilters } from './CategoryFilters'
-import { ForWhomFilters } from './ForWhomFilters'
-import { PriceFilters } from './PriceFilters'
-import { ClearFilters } from './ClearFilters'
 import { FiltersButton } from './FiltersButton'
+import { itemDataType } from '../../utils/itemData'
+import { getAllCategory } from '../../api/AllProducts'
+
 
 /** filters applied to the products list */
-const Filters: React.FC<{ searchbynamefunc1: (value: string) => Promise<void>, searchbyname1: string}> = ({searchbynamefunc1,searchbyname1}) => {
-  const [showFilters, setShowFilters] = useState(false)
+const Filters: React.FC<{ searchbynamefunc1: (value: string) => Promise<void>,searchbycatfunc1: (value: string) => Promise<void>, searchbyname1: string, clearall: (value: string) => Promise<void>}> = ({searchbynamefunc1,searchbycatfunc1,searchbyname1,clearall}) => {
+
+  const [showFilters, setShowFilters] = useState(false);
+
+  const [allProductsCategory,setAllProductsCategory] = useState<itemDataType[]>([]);
+
+  const getallproductscategory = async() => {
+    try {
+
+      const prod = await getAllCategory();
+      setAllProductsCategory(prod);
+
+    } catch (error) { 
+      console.log(error);
+    }
+  };
+
+  useEffect(()=>{
+    getallproductscategory();
+  },[]);
 
   return (
     <Wrapper>
@@ -31,12 +47,37 @@ const Filters: React.FC<{ searchbynamefunc1: (value: string) => Promise<void>, s
             />
           </div>
 
-          <CategoryFilters />
-          <ForWhomFilters />
-          <PriceFilters />
+          <div className='form-control'>
+            <h5>category</h5>
+            <div>
+              {allProductsCategory.map((uniqueCategory) => {
+                // without this if statement, TS complains uniqueCategory is possibility undefined
+                if (typeof uniqueCategory === 'string') {
+                  return (
+                    <button
+                      key={`${uniqueCategory}`}
+                      type='button'
+                      name='category'
+                     /* className={
+                        uniqueCategory.toLowerCase() === category
+                          ? 'active'
+                          : undefined
+                      }*/
+                      onClick={(e) => searchbycatfunc1(uniqueCategory)}
+                    >
+                      {uniqueCategory}
+                    </button>
+                  )
+                }
+                return null
+              })}
+            </div>
+          </div>
 
         </form>
-        <ClearFilters />
+        <button type='button' className='clear-btn' onClick={()=>clearall("hello")}>
+          clear filters
+        </button>
       </div>
     </Wrapper>
   )

@@ -40,13 +40,54 @@ const ProductsPage = () => {
     }
   };
 
+  const [searchbycat,setSearchbycat] = useState<string>("");
+
+  const searchbycatfunc = async(value: string) => {
+    try {
+
+      setSearchbycat(value);
+
+    } catch (error) { 
+      console.log(error);
+    }
+  };
+
+  //console.log(searchbycat);
+
+  const clearall = async(value: string) => {
+    try {
+
+      setSearchbyname("");
+      setSearchbycat("");
+
+    } catch (error) { 
+      console.log(error);
+    }
+  };
+
   const [allProducts,setAllProducts] = useState<itemDataType[]>([]);
 
   const filteredProducts = allProducts.filter(product => {
+
     const productName = product.title.toLowerCase();
-    const searchTerm = searchbyname.toLowerCase();
-    return productName.includes(searchTerm);
+    const productCat = product.category.toLowerCase();
+
+    return productName.includes(searchbyname.toLowerCase()) /*|| productCat.includes(searchbycat.toLowerCase())*/;
+
   });
+
+
+                                  /*(societydata && societydata.length > 0)
+                                  ? societydata.filter((item)=>{
+                                      return search.toLowerCase() === '' 
+                                    ? 
+                                      item 
+                                    : 
+                                      item.societyName.toLowerCase().includes(search.toLowerCase()) ||
+                                      item.societyEmailAddress.toLowerCase().includes(search.toLowerCase()) ||
+                                      item.societyContactNumber.toLowerCase().includes(search.toLowerCase()) ||
+                                      (item.societyHeadId.firstName.toLowerCase() + ' ' + item.societyHeadId.lastName.toLowerCase()).includes(search.toLowerCase())
+                                    }).slice(indexOfFirstPost,indexOfLastPost).map((item, index) => (*/
 
 
   const getallproducts = async() => {
@@ -70,9 +111,9 @@ const ProductsPage = () => {
       <PageHero title='products' />
       <Wrapper className='page'>
         <div className='section-center products'>
-          <Filters searchbynamefunc1={searchbynamefunc} searchbyname1={searchbyname} />
+          <Filters searchbynamefunc1={searchbynamefunc} searchbycatfunc1={searchbycatfunc} searchbyname1={searchbyname} clearall={clearall}/>
           <div>
-            <Sort />
+            <Sort itemnumber={filteredProducts.length}/>
             <ProductList allProducts1={filteredProducts}/>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { useFilterContext } from '../../context/filter_context'
 import styled from 'styled-components'
 import { SortMenu } from './SortMenu'
 import { SortButtons } from './SortButtons'
-const Sort = () => {
+const Sort: React.FC<{ itemnumber: number}> = ({itemnumber}) => {
   const { filteredProducts } = useFilterContext()
   
   const storedValuecarttt = localStorage.getItem('carttt');
@@ -12,7 +12,7 @@ const Sort = () => {
   return (
     <Wrapper>
       <SortButtons />
-      <p>{storedValuecarttt1.length} products found</p>
+      <p>{itemnumber} products found</p>
       <hr />
       <SortMenu />
     </Wrapper>
