@@ -2,7 +2,7 @@
 
 ## Demo of this app:
 
-![demo](./src/assets/demopage.png)
+![demo](https://ibb.co/wzwXJwq)
 
 ### Or Go to the live site and try it for yourself [here](https://lucent-semolina-3b2012.netlify.app/)
 
