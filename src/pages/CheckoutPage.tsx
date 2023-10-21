@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom'
 const CheckoutPage = () => {
   const { cart } = useCartContext()
 
-  if (cart.length < 1) {
+  const storedValuecarttt = localStorage.getItem('carttt');
+  const storedValuecarttt1 = storedValuecarttt ? JSON.parse(storedValuecarttt) : [];
+
+  if (storedValuecarttt1.length < 1) {
     return (
       <PageWrapper>
         <div className='empty'>

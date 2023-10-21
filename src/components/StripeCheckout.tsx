@@ -6,18 +6,18 @@ import { Elements } from '@stripe/react-stripe-js'
 
 // Type supposed to be: Promise<Stripe | null>,
 // but dunno where to install the required type so use any instead
-let promise: any
-
-if (process.env.REACT_APP_STRIPE_PUBLIC_KEY) {
-  promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
-}
+//let promise: any
+//
+//if (process.env.REACT_APP_STRIPE_PUBLIC_KEY) {
+//  promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
+//}
 
 const StripeCheckout = () => {
   return (
     <Wrapper className='section section-center'>
-      <Elements stripe={promise}>
+      {/*<Elements>*/}
         <CheckoutForm />
-      </Elements>
+      {/*</Elements>*/}
     </Wrapper>
   )
 }

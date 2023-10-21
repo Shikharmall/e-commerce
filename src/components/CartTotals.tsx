@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 const CartTotals = () => {
   const totallll = localStorage.getItem('totalll');
-  const totallll1 = totallll ? JSON.parse(totallll) : "";
 
   return (
     <Wrapper>
