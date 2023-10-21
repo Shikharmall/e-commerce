@@ -1,5 +1,4 @@
 import React from 'react'
-//import whiteLogo from '../../assets/logo_white.png'
 import whiteLogo from '../../assets/logo1.png'
 import { Link } from 'react-router-dom'
 
