@@ -4,7 +4,7 @@
 
 ![demo](./src/assets/cute-buddy-demo.gif)
 
-### Or Go to the live site and try it for yourself [here](https://cute-buddy.netlify.app/)
+### Or Go to the live site and try it for yourself [here](https://lucent-semolina-3b2012.netlify.app/)
 
 ## What is this project about?
 
