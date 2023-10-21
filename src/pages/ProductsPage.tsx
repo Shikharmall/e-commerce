@@ -111,7 +111,7 @@ const ProductsPage = () => {
       <PageHero title='products' />
       <Wrapper className='page'>
         <div className='section-center products'>
-          <Filters searchbynamefunc1={searchbynamefunc} searchbycatfunc1={searchbycatfunc} searchbyname1={searchbyname} clearall={clearall}/>
+          <Filters searchbynamefunc1={searchbynamefunc} searchbycatfunc1={searchbycatfunc} searchbyname1={searchbyname} searchbycat1={searchbycat} clearall={clearall}/>
           <div>
             <Sort itemnumber={filteredProducts.length}/>
             <ProductList allProducts1={filteredProducts}/>
