@@ -8,10 +8,10 @@
 
 ## What is this project about?
 
-- This is an e-commerce app that allows shoppers to view, sort, and filter products according to different criteria. After products are added to the shopping cart, payment is processed with Stripe API.
-- This serves as a TypeScript, Sanity CMS, GraphQL, and Stripe API learning project. I took the skeleton of [this Udemy course project](https://react-course-comfy-sloth-store.netlify.app/). The differences between the original one and my version are:
-  - replaced the JavaScript code with TypeScript.
-  - Instead of using dummy data and API provided by the Udemy course, I use some real product data from a friend's Instagram store. Sanity CMS is used to host the data, GraphQL is used to query the data.
+- This is a React JS based e-commerce app that allows shoppers to view, sort, and filter products according to different criteria.
+- It has a cart system, payment system etc.
+- This serves as a TypeScript, ReactJS while designing this project.
+- I have used dummy data from Fake Store API.
 
 ## What technologies were used?
 
