@@ -34,7 +34,8 @@ const CartItem: React.FC<{ cartItem: cartDataType ,makerefresh1: ()=>void }> = (
       {/* price column */}
       <div className='price'>₹ {Number(cartItem.price)}</div>
       {/* quantity column */}
-      <AmountButtons amount={Number(cartItem.amount)} increase={increase} decrease={decrease} />
+      <div className='price'>{Number(cartItem.amount)} qty.</div>
+      {/*<AmountButtons amount={Number(cartItem.amount)} increase={increase} decrease={decrease} />*/}
       {/* subtotal column */}
       <h5 className='subtotal'>₹ {(Number(cartItem.price) * Number(cartItem.amount))}</h5>
 
