@@ -67,27 +67,57 @@ const ProductsPage = () => {
 
   const [allProducts,setAllProducts] = useState<itemDataType[]>([]);
 
-  const filteredProducts = allProducts.filter(product => {
+    //const filteredProducts = allProducts.filter((product) => {
+  //
+    //  const productName = product.title.toLowerCase();
+    //  const productCat = product.category.toLowerCase();
+  //
+    //  return productName.includes(searchbyname.toLowerCase()) /*|| productCat.includes(searchbycat.toLowerCase())*/;
+  //
+    //});
 
-    const productName = product.title.toLowerCase();
-    const productCat = product.category.toLowerCase();
 
-    return productName.includes(searchbyname.toLowerCase()) /*|| productCat.includes(searchbycat.toLowerCase())*/;
+  // filteredProducts = allProducts.filter((product) => {
+//
+  //  const productName = product.title.toLowerCase();
+  //  const productCat = product.category.toLowerCase();
+//
+  //  return /*productName.includes(searchbyname.toLowerCase()) || */ productCat.includes(searchbycat.toLowerCase());
+//
+  //})//
+  //console.log(filteredProducts);
 
-  });
+  //const filteredProducts = allProducts.filter((item)=>{
+  //  return search.toLowerCase() === '' 
+  //? 
+  //  item 
+  //: 
+  //  item.societyName.toLowerCase().includes(search.toLowerCase()) ||
+  //  item.societyEmailAddress.toLowerCase().includes(search.toLowerCase()) ||
+  //  item.societyContactNumber.toLowerCase().includes(search.toLowerCase()) ||
+  //  (item.societyHeadId.firstName.toLowerCase() + ' ' + item.societyHeadId.lastName.toLowerCase()).includes(search.toLowerCase())
+  //})
 
 
-                                  /*(societydata && societydata.length > 0)
-                                  ? societydata.filter((item)=>{
-                                      return search.toLowerCase() === '' 
-                                    ? 
-                                      item 
-                                    : 
-                                      item.societyName.toLowerCase().includes(search.toLowerCase()) ||
-                                      item.societyEmailAddress.toLowerCase().includes(search.toLowerCase()) ||
-                                      item.societyContactNumber.toLowerCase().includes(search.toLowerCase()) ||
-                                      (item.societyHeadId.firstName.toLowerCase() + ' ' + item.societyHeadId.lastName.toLowerCase()).includes(search.toLowerCase())
-                                    }).slice(indexOfFirstPost,indexOfLastPost).map((item, index) => (*/
+
+      /*(societydata && societydata.length > 0)
+      ? societydata.filter((item)=>{
+          return search.toLowerCase() === '' 
+        ? 
+          item 
+        : 
+          item.societyName.toLowerCase().includes(search.toLowerCase()) ||
+          item.societyEmailAddress.toLowerCase().includes(search.toLowerCase()) ||
+          item.societyContactNumber.toLowerCase().includes(search.toLowerCase()) ||
+          (item.societyHeadId.firstName.toLowerCase() + ' ' + item.societyHeadId.lastName.toLowerCase()).includes(search.toLowerCase())
+        }).slice(indexOfFirstPost,indexOfLastPost).map((item, index) => (*/
+
+        const filteredProducts = allProducts.filter((product) => {
+          const productName = product.title.toLowerCase();
+          const productCat = product.category.toLowerCase();
+        
+          return productName.includes(searchbyname.toLowerCase()) && productCat.includes(searchbycat.toLowerCase());
+        });
 
 
   const getallproducts = async() => {
