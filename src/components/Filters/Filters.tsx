@@ -4,13 +4,11 @@ import { SearchFilters } from './SearchFilters'
 import { CategoryFilters } from './CategoryFilters'
 import { ForWhomFilters } from './ForWhomFilters'
 import { PriceFilters } from './PriceFilters'
-import { AgeFilters } from './AgeFilters'
-import { HeightFilters } from './HeightFilters'
 import { ClearFilters } from './ClearFilters'
 import { FiltersButton } from './FiltersButton'
 
 /** filters applied to the products list */
-const Filters = () => {
+const Filters: React.FC<{ searchbynamefunc1: (value: string) => Promise<void>, searchbyname1: string}> = ({searchbynamefunc1,searchbyname1}) => {
   const [showFilters, setShowFilters] = useState(false)
 
   return (
@@ -20,14 +18,23 @@ const Filters = () => {
         setShowFilters={setShowFilters}
       />
 
-      <div className={showFilters ? 'show-filters content' : 'content'}>
-        <form onSubmit={e => e.preventDefault()}>
-          <SearchFilters />
+          <div>
+            <form onSubmit={e => e.preventDefault()}>
+            <div className='form-control'>
+            <input
+              type='text'
+              name='searchTerm'
+              placeholder='search'
+              className='search-input'
+              value={searchbyname1}
+              onChange={e => searchbynamefunc1(e.target.value)} 
+            />
+          </div>
+
           <CategoryFilters />
           <ForWhomFilters />
           <PriceFilters />
-          <AgeFilters />
-          <HeightFilters />
+
         </form>
         <ClearFilters />
       </div>

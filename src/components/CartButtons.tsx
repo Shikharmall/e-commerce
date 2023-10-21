@@ -26,7 +26,7 @@ const CartButtons = () => {
       }
     } 
 
-  });
+  },[]); //changesss//
 
   return (
     <Wrapper className='cart-btn-wrapper'>
