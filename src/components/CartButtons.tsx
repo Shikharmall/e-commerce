@@ -1,20 +1,40 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { useProductsContext } from '../context/products_context'
-import { useCartContext } from '../context/cart_context'
 
 const CartButtons = () => {
-  const { closeSidebar } = useProductsContext()
-  const { totalItems } = useCartContext()
+
+
+  const [storedValuecarttt, setStoredValuecarttt] = useState<string | null>("");
+  const [storedValuecarttt1, setStoredValuecarttt1] = useState<Array<any> | null>([]);
+
+  const [totalitemm, setTotalitemm] = useState<number>(0);
+
+  useEffect(()=>{
+
+    const storedValuecarttt = localStorage.getItem('carttt');
+
+    if(storedValuecarttt){
+      try {
+        const parsedValue = JSON.parse(storedValuecarttt);
+        setStoredValuecarttt1(parsedValue);
+        const flaggg: number = parsedValue.length;
+        setTotalitemm(flaggg);
+      } catch (error) {
+        console.error('Error parsing storedValuecarttt:', error);
+      }
+    } 
+
+  });
+
   return (
     <Wrapper className='cart-btn-wrapper'>
-      <Link to='/cart' className='cart-btn' onClick={closeSidebar}>
+      <Link to='/cart' className='cart-btn' >
         Cart
         <span className='cart-container'>
           <FaShoppingCart />
-          <span className='cart-value'>{totalItems}</span>
+          <span className='cart-value'>{totalitemm}</span>
         </span>
       </Link>
     </Wrapper>
