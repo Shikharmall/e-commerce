@@ -2,7 +2,7 @@
 
 ## Demo of this app:
 
-![demo](./src/assets/cute-buddy-demo.gif)
+![demo](./src/assets/demopage.png)
 
 ### Or Go to the live site and try it for yourself [here](https://lucent-semolina-3b2012.netlify.app/)
 
