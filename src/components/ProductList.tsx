@@ -53,7 +53,7 @@ const ProductList = () => {
     //return <ListView filteredProducts={allProducts} />;
     return <GridView filteredProducts={allProducts}/>
   } else {
-    return <Loading />;
+    return <h1>Loading...</h1>;
   }
 
   //if (!gridView) {

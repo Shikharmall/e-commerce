@@ -5,6 +5,7 @@ import { BsFillGridFill, BsList } from 'react-icons/bs'
 export const SortButtons = () => {
   const { gridView, setGridView, setListView } = useFilterContext()
   return (
+    <>
     <div className='btn-container'>
       <button
         type='button'
@@ -21,5 +22,6 @@ export const SortButtons = () => {
         <BsList />
       </button>
     </div>
+    </>
   )
 }

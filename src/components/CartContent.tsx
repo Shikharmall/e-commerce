@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
@@ -7,17 +7,44 @@ import CartItem from './CartItem'
 import CartTotals from './CartTotals'
 import { cartDataType } from '../utils/cartData'
 
-const CartContent = () => {
+
+const CartContent: React.FC<{ makerefresh: ()=>void }> = ({makerefresh}) => {
   //const { cart, clearCart } = useCartContext()
+
+const [storedValuecarttt, setStoredValuecarttt] = useState<string | null>("");
+const [storedValuecarttt1, setStoredValuecarttt1] = useState<Array<any> | null>([]);
+
+const [refresh1,setRefresh1] = useState<string[] | null>(null);
+
+  const makerefresh1 = ()=>{
+    if (refresh1 === null) {
+      setRefresh1(['hello']);
+      makerefresh();
+    } else {
+      setRefresh1([...refresh1, 'hello']);
+      makerefresh();
+    }
+  }
+
+useEffect(() => {
   const storedValuecarttt = localStorage.getItem('carttt');
-  const storedValuecarttt1 = storedValuecarttt ? JSON.parse(storedValuecarttt) : [];
+
+  if (storedValuecarttt) {
+    setStoredValuecarttt(storedValuecarttt);
+    setStoredValuecarttt1(JSON.parse(storedValuecarttt));
+  } else {
+    setStoredValuecarttt(null);
+    setStoredValuecarttt1([]);
+  }
+}, [refresh1]);
+
   return (
     <Wrapper className='section section-center'>
       <CartColumns />
       {
-        (storedValuecarttt1 || storedValuecarttt1.length > 0)?
+        (storedValuecarttt1 && storedValuecarttt1.length > 0)?
           storedValuecarttt1.map((cartItem: cartDataType ,index: number) => {
-            return <CartItem key={index} cartItem={cartItem} />
+            return <CartItem key={index} cartItem={cartItem} makerefresh1={makerefresh1}/>
           })
         :
         null

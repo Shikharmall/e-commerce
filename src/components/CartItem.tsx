@@ -6,11 +6,10 @@ import { FaTrash } from 'react-icons/fa'
 import { cartType, useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
 import { cartDataType } from '../utils/cartData'
+import { removeItemInCart } from '../cartlogic/CartLogic'
 
-const CartItem: React.FC<{ cartItem: cartDataType }> = ({ cartItem }) => {
+const CartItem: React.FC<{ cartItem: cartDataType ,makerefresh1: ()=>void }> = ({ cartItem, makerefresh1 }) => {
   //const { id, image, title, price, amount /*, slug */} = cartItem
-
-  console.log(cartItem.price);
 
   //const { removeItem, toggleAmount } = useCartContext()
 
@@ -33,7 +32,7 @@ const CartItem: React.FC<{ cartItem: cartDataType }> = ({ cartItem }) => {
         </div>
       </div>
       {/* price column */}
-      <div className='price'>₹ {cartItem.price.toString()}</div>
+      <div className='price'>₹ {Number(cartItem.price)}</div>
       {/* quantity column */}
       <AmountButtons amount={Number(cartItem.amount)} increase={increase} decrease={decrease} />
       {/* subtotal column */}
@@ -43,7 +42,10 @@ const CartItem: React.FC<{ cartItem: cartDataType }> = ({ cartItem }) => {
       <button
         type='button'
         className='remove-btn'
-        //onClick={() => removeItem(id)}
+        onClick={() => {
+          removeItemInCart(Number(cartItem.id))
+          makerefresh1()
+        }}
       >
         <FaTrash />
       </button>

@@ -5,11 +5,14 @@ import { SortMenu } from './SortMenu'
 import { SortButtons } from './SortButtons'
 const Sort = () => {
   const { filteredProducts } = useFilterContext()
+  
+  const storedValuecarttt = localStorage.getItem('carttt');
+  const storedValuecarttt1 = storedValuecarttt ? JSON.parse(storedValuecarttt) : [];
 
   return (
     <Wrapper>
       <SortButtons />
-      <p>{filteredProducts.length} products found</p>
+      <p>{storedValuecarttt1.length} products found</p>
       <hr />
       <SortMenu />
     </Wrapper>
