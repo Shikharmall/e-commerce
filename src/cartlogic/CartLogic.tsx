@@ -1,5 +1,5 @@
-
   
+  //add item to cart
   
   export const addItemInCart = (id: number, title: string, amount: number, price: number, image: string)=>{
 
@@ -43,12 +43,9 @@
 
   }
 
-  export const removeItemInCart = (id: number)=>{
+  //remove item from cart
 
-    //let array = [1, 2, 3, 4, 5];
-    //let indexToRemove = 2; // Index of the element to remove
-    //array.splice(indexToRemove, 1); // Removes one element at the specified index
-    //console.log(array); 
+  export const removeItemInCart = (iddd: number)=>{
 
     try{
 
@@ -60,14 +57,15 @@
   
         if(Array.isArray(storedValuecarttt1)){
 
-          console.log(storedValuecarttt1);
+          storedValuecarttt1.map((item,index)=>{
+            if(item.id === iddd){
 
-          let indexToRemove = 0; 
-          storedValuecarttt1.splice(indexToRemove, 1);
+              let indexToRemove: number = index; 
+              storedValuecarttt1.splice(indexToRemove, 1);
 
-          console.log(storedValuecarttt1);
-
-          localStorage.setItem('carttt', JSON.stringify(storedValuecarttt1));
+              localStorage.setItem('carttt', JSON.stringify(storedValuecarttt1));
+            }
+          })
 
         } else {
           console.error('The stored cart is not an array.');
@@ -78,7 +76,5 @@
     }catch(error) {
       console.error('Error parsing or updating the cart:', error);
     }
-      
-    console.log(id);
 
   }

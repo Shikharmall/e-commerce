@@ -23,18 +23,15 @@ const CartPage = () => {
 
   useEffect(() => {
 
-    //const makerefresh = ()=>{
-      //setRefresh("hello");
-      const storedValuecarttt = localStorage.getItem('carttt');
-  
-      if (storedValuecarttt) {
-        setStoredValuecarttt(storedValuecarttt);
-        setStoredValuecarttt1(JSON.parse(storedValuecarttt));
-      } else {
-        setStoredValuecarttt(null);
-        setStoredValuecarttt1([]);
-      }
-    //}
+    const storedValuecarttt = localStorage.getItem('carttt');
+
+    if (storedValuecarttt) {
+      setStoredValuecarttt(storedValuecarttt);
+      setStoredValuecarttt1(JSON.parse(storedValuecarttt));
+    } else {
+      setStoredValuecarttt(null);
+      setStoredValuecarttt1([]);
+    }
     
   }, [refresh]);
   

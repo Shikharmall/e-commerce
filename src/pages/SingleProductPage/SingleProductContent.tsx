@@ -1,6 +1,4 @@
 import React from 'react'
-//import { useProductsContext } from '../../context/products_context'
-//import { formatPrice } from '../../utils/helpers'
 import { AddToCart } from '../../components'
 import { itemDataType } from '../../utils/itemData'
 
