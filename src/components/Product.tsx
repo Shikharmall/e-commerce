@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { formatPrice } from '../utils/helpers'
 import { FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { productDataType } from '../utils/productData'
 import { itemDataType } from '../utils/itemData'
 
 const Product: React.FC<{ product: itemDataType}> = ({ product }) => {
@@ -20,8 +18,8 @@ const Product: React.FC<{ product: itemDataType}> = ({ product }) => {
         </Link>
       </div>
       <footer>
-        <h5>{title}</h5>
-        <p>{formatPrice(price)}</p>
+        <h5>{title.substring(0,15)+"...."}</h5>
+        <p>₹{price}</p>
       </footer>
     </Wrapper>
   )

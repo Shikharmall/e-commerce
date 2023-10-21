@@ -3,8 +3,7 @@ import { useFilterContext } from '../../context/filter_context'
 import { services } from '../../utils/constants'
 
 export const ServicesCards = () => {
-  const { updateFilters, handleClickFromServices, clearFilters } =
-    useFilterContext()
+  const { updateFilters, handleClickFromServices, clearFilters } =useFilterContext()
   return (
     <div className='services-center'>
       {services.map(({ id, icon, title }) => {
