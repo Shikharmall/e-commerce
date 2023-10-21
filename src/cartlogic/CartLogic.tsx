@@ -1,6 +1,6 @@
   
   //add item to cart
-  
+
   export const addItemInCart = (id: number, title: string, amount: number, price: number, image: string)=>{
 
     let cartItem = {id:id, title:title, amount:amount, price:price, image:image};
@@ -13,7 +13,7 @@
         if (storedValuecarttt) {
           const storedValuecarttt1 = JSON.parse(storedValuecarttt);
 
-          let totalll1String = localStorage.getItem('totalll'); 
+          /*let totalll1String = localStorage.getItem('totalll'); 
           let totalll1 = Number(totalll1String); 
           
           if (!isNaN(totalll1)) { 
@@ -21,7 +21,7 @@
             totalll1 = totalll1 + totalll; 
             localStorage.setItem('totalll', totalll1.toString()); 
 
-          } 
+          } */
 
     
           if (Array.isArray(storedValuecarttt1)) {
@@ -34,7 +34,6 @@
 
         } else {
           localStorage.setItem('carttt', JSON.stringify([cartItem]));
-          localStorage.setItem('totalll', JSON.stringify(totalll));
         }
 
       } catch (error) {

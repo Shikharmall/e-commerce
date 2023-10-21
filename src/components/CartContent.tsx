@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
-import { useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
 import CartColumns from './CartColumns'
 import CartItem from './CartItem'
@@ -9,7 +8,6 @@ import { cartDataType } from '../utils/cartData'
 
 
 const CartContent: React.FC<{ makerefresh: ()=>void }> = ({makerefresh}) => {
-  //const { cart, clearCart } = useCartContext()
 
 const [storedValuecarttt, setStoredValuecarttt] = useState<string | null>("");
 const [storedValuecarttt1, setStoredValuecarttt1] = useState<Array<any> | null>([]);
@@ -50,7 +48,7 @@ useEffect(() => {
         null
       }
       <hr />
-      {/*<Buttons clearCart={clearCart} />*/}
+
       <CartTotals />
     </Wrapper>
   )

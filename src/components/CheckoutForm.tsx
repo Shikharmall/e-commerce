@@ -16,41 +16,34 @@ export const CheckoutForm = () => {
   const [error, setError] = useState('') // error message
   const [processing, setProcessing] = useState(false) // if the payment is processing
   const [disabled, setDisabled] = useState(false) // disable the pay button
-  //const [clientSecret, setClientSecret] = useState('') // client_secret returned from Netlify function
-//
-  //// display the payable amount returned from server 
-  //const [totalAmountFromServer, setTotalAmountFromServer] = useState(0)
-//
-  //const stripe = useStripe()
-  //const elements = useElements()
 
-  // push to successful payment page
- // const history = useHistory()
+  const [ordertotall,setOrdertotall] = useState<Number>(0);
 
-  /*const createPaymentIntent = async () => {
-    try {
-      const { data } = await axios.post(
-        '/.netlify/functions/create-payment-intent',
-        JSON.stringify({ cart })
-      )
-            
-      setClientSecret(data.clientSecret)
-      setTotalAmountFromServer(data.amount)
-    } catch (error) {
-      console.log(error)
-    }
-  }*/
-
-  // send cart to netlify function when component mounts
   useEffect(() => {
-    //createPaymentIntent()
-    // eslint-disable-next-line
-  }, [])
+    
+    const storedValuecarttt = localStorage.getItem('carttt');
+  
+    if(storedValuecarttt){
 
-  //const handleChange = async (event: any) => {
-  //  setDisabled(event.empty)
-  //  setError(event.error ? event.error.message : '')
-  //}
+      const storedValuecarttt1 = JSON.parse(storedValuecarttt);
+  
+      if(Array.isArray(storedValuecarttt1)){
+
+        let totall1: number = 0;
+
+        storedValuecarttt1.map((item,index)=>{
+
+          totall1 = totall1 + (Number(item.amount)*Number(item.price));
+          
+        })
+
+        setOrdertotall(totall1);
+
+      }
+
+    }
+
+  }, []);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault()
@@ -67,28 +60,9 @@ export const CheckoutForm = () => {
       },
     }
 
-    //const cardElement = elements?.getElement(CardElement)
+    
 
-  //  if (cardElement) {
-  //    const payload = await stripe?.confirmCardPayment(clientSecret, {
-  //      payment_method: {
-  //        card: cardElement,
-  //        billing_details: billingDetails,
-  //      },
-  //    })
-//
-//
-  //    if (payload && payload.error) {
-  //      setError(`Payment failed `)
-  //      setProcessing(false)
-  //    } else {
-  //      setError('')
-  //      setProcessing(false)
-  //      setSucceeded(true)
-  //      // re-route to successful payment page
-  //     // history.push('/successful_payment')
-  //    }
-  //  }
+
   }
 
   return (
@@ -130,7 +104,7 @@ export const CheckoutForm = () => {
               {processing ? (
                 <div className='spinner' id='spinner' />
               ) : (
-                `Pay ₹${totallll}`
+                `Pay ₹${ordertotall}`
               )}
             </span>
           </button>

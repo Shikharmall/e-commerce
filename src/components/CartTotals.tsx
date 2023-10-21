@@ -1,16 +1,44 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const CartTotals = () => {
-  const totallll = localStorage.getItem('totalll');
+
+
+  const [ordertotall,setOrdertotall] = useState<Number>(0);
+
+  useEffect(() => {
+    
+    const storedValuecarttt = localStorage.getItem('carttt');
+  
+    if(storedValuecarttt){
+
+      const storedValuecarttt1 = JSON.parse(storedValuecarttt);
+  
+      if(Array.isArray(storedValuecarttt1)){
+
+        let totall1: number = 0;
+
+        storedValuecarttt1.map((item,index)=>{
+
+          totall1 = totall1 + (Number(item.amount)*Number(item.price));
+          
+        })
+
+        setOrdertotall(totall1);
+
+      }
+
+    }
+
+  }, []);
 
   return (
     <Wrapper>
       <div>
         <article>
           <h5>
-            subtotal : <span>₹ {totallll}</span>
+            subtotal : <span>₹ {Number(ordertotall)}</span>
           </h5>
           <p>
             shipping fee: <span>FREE!</span>
@@ -18,7 +46,7 @@ const CartTotals = () => {
           <hr />
           {/* Supposed to be totalAmount + shipping fee, but there's no shipping fee at the moment */}
           <h4>
-            order total: <span>₹ {totallll}</span>
+            order total: <span>₹ {Number(ordertotall)}</span>
           </h4>
         </article>
         <CheckoutButton />
