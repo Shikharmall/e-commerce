@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { BrowserRouter , Route , Routes } from 'react-router-dom';
 import { Navbar, Sidebar, Footer, ScrollToTop } from './components'
 
@@ -14,6 +14,7 @@ import {
 } from './pages'
 
 function App() {
+
   return (
 
     <BrowserRouter>
@@ -37,11 +38,22 @@ function App() {
 export default App
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+
+  const [isopen,setIsopen] = useState<boolean>(false);
+
+  const handleopen = async()=>{
+    setIsopen(true);
+  }
+
+  const handleclose = async()=>{
+    setIsopen(false);
+  }
+
   return (
     <>
       <ScrollToTop />
-      <Navbar />
-      <Sidebar />
+      <Navbar  ismainopen={isopen} handlemainopen={handleopen}/>
+      <Sidebar ismainopen={isopen} handlemainclose={handleclose}/>
       {children}
       <Footer />
     </>

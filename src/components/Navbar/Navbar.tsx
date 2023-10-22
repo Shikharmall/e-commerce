@@ -2,27 +2,10 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 import CartButtons from '../CartButtons'
 import { Logo } from './Logo'
-import { NavLinks } from './NavLinks'
-import { FaBars } from 'react-icons/fa';
+import { NavLinks1 } from './NavLinks1'
+import { FaBars } from 'react-icons/fa'
 
-const Nav = () => {
-  const [isopen,setIsopen] = useState<boolean>(false);
-
-  const handleclose = async()=>{
-    setIsopen(false);
-  }
-
-  const handleopenburger = async()=>{
-    setIsopen(true);
-  }
-  const bothcomp = async()=>{
-    //setIsopen(true);
-  }
-
-  const bothcomp11 = async()=>{
-    setIsopen(false);
-  }
-
+const Nav: React.FC<{ismainopen: boolean,handlemainopen: ()=>void}> = ({ismainopen,handlemainopen}) => {
 
   return (
     <NavContainer>
@@ -31,10 +14,10 @@ const Nav = () => {
           <Logo />
         </div>
         {/*<NavLinks className='nav-links' />*/}
-        <NavLinks className='nav-links' isopen1={isopen} handleclose1={handleclose} bothcomp1={bothcomp} bothcomp111={bothcomp11}/>
+        <NavLinks1 className='nav-links'/>
       </div>
       <CartButtons />
-      <HamburgerButton type='button' onClick={handleopenburger}>
+      <HamburgerButton type='button' onClick={handlemainopen}>
         <FaBars />
       </HamburgerButton>
     </NavContainer>

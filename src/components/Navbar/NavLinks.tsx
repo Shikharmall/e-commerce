@@ -1,11 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const NavLinks: React.FC<{ className: string , isopen1: boolean,handleclose1: ()=>void , bothcomp1: ()=> void, bothcomp111: ()=> void}> = ({ className,isopen1,handleclose1,bothcomp1,bothcomp111}) => {
-
-  if(isopen1 === true){
-    bothcomp1();
-  }
+export const NavLinks: React.FC<{ className: string , handleclose1: ()=>void}> = ({ className,handleclose1}) => {
 
 
   return (

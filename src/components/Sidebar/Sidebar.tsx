@@ -3,27 +3,20 @@ import styled from 'styled-components'
 import { NavLinks } from '../Navbar/NavLinks'
 import { SidebarHeader } from './SidebarHeader'
 
-const Sidebar = () => {
+const Sidebar: React.FC<{ismainopen: boolean,handlemainclose: ()=>void}> = ({ismainopen,handlemainclose}) => {
 
-  const [isopen,setIsopen] = useState<boolean>(false);
 
   const handleclose = async()=>{
-    setIsopen(false);
+    handlemainclose();
   }
 
-  const bothcomp = async()=>{
-    setIsopen(true);
-  }
 
-  const bothcomp11 = async()=>{
-    //setIsopen(false);
-  }
 
   return (
     <SidebarContainer>
-      <aside className={isopen ? 'sidebar show-sidebar' : 'sidebar'}>
-        <SidebarHeader isopen1={isopen} handleclose1={handleclose}/>
-        <NavLinks className='links' isopen1={isopen} handleclose1={handleclose} bothcomp1={bothcomp} bothcomp111={bothcomp11}/>
+      <aside className={ismainopen ? 'sidebar show-sidebar' : 'sidebar'}>
+        <SidebarHeader handleclose1={handleclose}/>
+        <NavLinks className='links' handleclose1={handleclose} />
       </aside>
     </SidebarContainer>
   )

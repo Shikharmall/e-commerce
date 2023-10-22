@@ -3,7 +3,7 @@ import logo from '../../assets/logo_white.png'
 import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 
-export const SidebarHeader: React.FC<{ isopen1: boolean,handleclose1: ()=>void}> = ({isopen1,handleclose1}) => {
+export const SidebarHeader: React.FC<{handleclose1: ()=>void}> = ({handleclose1}) => {
   //const { closeSidebar } = useProductsContext()
   return (
     <div className='sidebar-header'>
