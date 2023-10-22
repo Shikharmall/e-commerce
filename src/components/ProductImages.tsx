@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const ProductImages: React.FC<{ images: string /*| undefined*/ }> = ({
-  //images = [],
-  images
-}) => {
+const ProductImages: React.FC<{ images: string }> = ({images}) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [imagess, setImagess] = useState(['1','2']);
 

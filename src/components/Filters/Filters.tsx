@@ -4,10 +4,7 @@ import { itemDataType } from '../../utils/itemData'
 import { getAllCategory } from '../../api/AllProducts'
 
 
-/** filters applied to the products list */
 const Filters: React.FC<{ searchbynamefunc1: (value: string) => Promise<void>,searchbycatfunc1: (value: string) => Promise<void>, searchbyname1: string,searchbycat1: string, clearall: (value: string) => Promise<void>}> = ({searchbynamefunc1,searchbycatfunc1,searchbyname1,searchbycat1,clearall}) => {
-
-  const [showFilters, setShowFilters] = useState(false);
 
   const [allProductsCategory,setAllProductsCategory] = useState<itemDataType[]>([]);
 

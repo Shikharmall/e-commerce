@@ -1,12 +1,10 @@
 import React from 'react'
-import { useFilterContext } from '../../context/filter_context'
 
 export const SortMenu = () => {
-  const { sort, updateSort } = useFilterContext()
   return (
     <form>
       <label htmlFor='sort'>sort by{` `}</label>
-      <select name='sort' id='sort' value={sort} onChange={e => updateSort(e)}>
+      <select name='sort' id='sort'>
         <option value='price-lowest'>price (lowest)</option>
         <option value='price-highest'>price (highest)</option>
         <option value='name-a'>name (a-z)</option>

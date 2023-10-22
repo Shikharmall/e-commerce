@@ -1,7 +1,6 @@
 import React,{ useState ,useEffect} from 'react';
 import GridView from './GridView'
 
-import {getAllProducts} from '../api/AllProducts';
 import { itemDataType } from '../utils/itemData';
 
 const ProductList: React.FC<{ allProducts1: itemDataType[] }> = ({allProducts1}) => {

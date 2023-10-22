@@ -1,6 +1,5 @@
 import React, { useEffect ,useState} from 'react'
 import { useParams } from 'react-router-dom'
-//import { useProductsContext } from '../../context/products_context'
 import { ProductImages, Loading, PageHero } from '../../components'
 import styled from 'styled-components'
 import { BackToProductsButton } from './BackToProductsButton'
