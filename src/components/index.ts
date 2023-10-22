@@ -39,9 +39,5 @@ export {
   Sort,
   CartContent,
   StripeCheckout,
-  ScrollToTop,
-
-  // CartButtons,
-  // Error,
-  // Stars,
+  ScrollToTop
 }
