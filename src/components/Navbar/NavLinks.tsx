@@ -1,27 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { links } from '../../utils/constants'
-import { useProductsContext } from '../../context/products_context'
 
-export const NavLinks: React.FC<{ className: string; isSidebar?: boolean }> = ({ className, isSidebar }) => {
-  const { closeSidebar } = useProductsContext()
+export const NavLinks: React.FC<{ className: string , isopen1: boolean,handleclose1: ()=>void , bothcomp1: ()=> void, bothcomp111: ()=> void}> = ({ className,isopen1,handleclose1,bothcomp1,bothcomp111}) => {
+
+  if(isopen1 === true){
+    bothcomp1();
+  }
+
+
   return (
-    <ul className={className}>
-      {links.map(({ id, text, url }) => {
-        return (
-          <li key={id} onClick={isSidebar ? closeSidebar : undefined}>
-            <Link to={url}>{text}</Link>
-          </li>
-        )
-      })}
-      {/* 'checkout' only available in sidebar, not in Navbar */}
-      {isSidebar && (
+      <ul className={className}>
+
         <li>
-          <Link to='/checkout' onClick={closeSidebar}>
-            checkout
-          </Link>
+          <Link to='/' onClick={handleclose1}>Home</Link>
         </li>
-      )}
-    </ul>
+
+        <li>
+          <Link to='/shipping' onClick={handleclose1}>Shipping</Link>
+        </li>
+
+        <li>
+          <Link to='/products' onClick={handleclose1}>Products</Link>
+        </li>
+
+        <li>
+          <Link to='/cart' onClick={handleclose1}>Cart</Link>
+        </li>
+
+      </ul>
   )
 }

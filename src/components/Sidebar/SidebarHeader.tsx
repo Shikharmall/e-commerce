@@ -2,16 +2,15 @@ import React from 'react'
 import logo from '../../assets/logo_white.png'
 import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
-import { useProductsContext } from '../../context/products_context'
 
-export const SidebarHeader = () => {
-  const { closeSidebar } = useProductsContext()
+export const SidebarHeader: React.FC<{ isopen1: boolean,handleclose1: ()=>void}> = ({isopen1,handleclose1}) => {
+  //const { closeSidebar } = useProductsContext()
   return (
     <div className='sidebar-header'>
-      <Link to='/' onClick={closeSidebar}>
+      <Link to='/' onClick={handleclose1}>
         <img src={logo} className='logo' alt='cute buddy' />
       </Link>
-      <button type='button' className='close-btn' onClick={closeSidebar}>
+      <button type='button' className='close-btn' onClick={handleclose1}>
         <FaTimes />
       </button>
     </div>

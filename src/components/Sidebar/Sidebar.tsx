@@ -1,18 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import CartButtons from '../CartButtons'
 import { NavLinks } from '../Navbar/NavLinks'
-import { useProductsContext } from '../../context/products_context'
 import { SidebarHeader } from './SidebarHeader'
 
 const Sidebar = () => {
-  const { isSidebarOpen } = useProductsContext()
+
+  const [isopen,setIsopen] = useState<boolean>(false);
+
+  const handleclose = async()=>{
+    setIsopen(false);
+  }
+
+  const bothcomp = async()=>{
+    setIsopen(true);
+  }
+
+  const bothcomp11 = async()=>{
+    //setIsopen(false);
+  }
+
   return (
     <SidebarContainer>
-      <aside className={isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}>
-        <SidebarHeader />
-        <NavLinks className='links' isSidebar={true} />
-        <CartButtons />
+      <aside className={isopen ? 'sidebar show-sidebar' : 'sidebar'}>
+        <SidebarHeader isopen1={isopen} handleclose1={handleclose}/>
+        <NavLinks className='links' isopen1={isopen} handleclose1={handleclose} bothcomp1={bothcomp} bothcomp111={bothcomp11}/>
       </aside>
     </SidebarContainer>
   )

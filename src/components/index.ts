@@ -18,9 +18,6 @@ import StripeCheckout from './StripeCheckout'
 import ScrollToTop from './ScrollToTop'
 
 
-// import CartButtons from './CartButtons'
-// import Error from './Error'
-// import Stars from './Stars'
 export {
   Navbar,
   Footer,
