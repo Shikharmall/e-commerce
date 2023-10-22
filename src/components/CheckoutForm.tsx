@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { CardElement} from '@stripe/react-stripe-js'
 import styled from 'styled-components'
-// Billing info and style from Stripe YouTube tutorial
 import Row from './Row'
 import BillingDetailsFields from './BillingDetailsFields'
 
 export const CheckoutForm = () => {
+
   const totallll = localStorage.getItem('totalll');
-  const [succeeded, setSucceeded] = useState(false) // if the payment succeeded
-  const [error, setError] = useState('') // error message
-  const [processing, setProcessing] = useState(false) // if the payment is processing
-  const [disabled, setDisabled] = useState(false) // disable the pay button
 
   const [ordertotall,setOrdertotall] = useState<Number>(0);
 
@@ -40,9 +35,11 @@ export const CheckoutForm = () => {
 
   }, []);
 
+
+  //submit details for backend....
+
   const handleSubmit = async (event: any) => {
     event.preventDefault()
-    //setProcessing(true)
 
     const billingDetails = {
       name: event.target.name.value,
@@ -54,10 +51,10 @@ export const CheckoutForm = () => {
         postal_code: event.target.zip.value,
       },
     }
+  }
 
-    
-
-
+  const handleClick = async () => {
+    window.location.href = '/successful_payment';
   }
 
   return (
@@ -75,24 +72,13 @@ export const CheckoutForm = () => {
           <li>CVC: 222</li>
         </TestCardDetails>
 
-        {/* Show any error that happens when processing the payment */}
-        {error ?? (
-          <div className='card-error' role='alert'>
-            {error}
-          </div>
-        )}
-
         <Row>
           <button
-            disabled={processing || disabled || succeeded || !CardElement}
             type='submit'
+            onClick={handleClick}
           >
             <span id='button-text'>
-              {processing ? (
-                <div className='spinner' id='spinner' />
-              ) : (
-                `Pay ₹${ordertotall}`
-              )}
+              Pay ₹{Number(ordertotall)}
             </span>
           </button>
         </Row>
