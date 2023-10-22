@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
-
 import { GiClothes } from 'react-icons/gi'
 import { MdLaptop} from 'react-icons/md';
 import { FaGem} from 'react-icons/fa';
 
 export const ServicesCards = () => {
   return (
-    <div className='services-center'>
+        <div className='services-center'>
           <article  className='service'>
             <span className='icon'><GiClothes /></span>
             <h4></h4>
@@ -20,6 +19,7 @@ export const ServicesCards = () => {
               </button>
             </Link>
           </article>
+
           <article className='service'>
             <span className='icon'><MdLaptop/></span>
             <h4></h4>
@@ -33,6 +33,7 @@ export const ServicesCards = () => {
               </button>
             </Link>
           </article>
+
           <article className='service'>
             <span className='icon'><FaGem/></span>
             <h4></h4>
@@ -46,6 +47,6 @@ export const ServicesCards = () => {
               </button>
             </Link>
           </article>
-    </div>
+        </div>
   )
 }
