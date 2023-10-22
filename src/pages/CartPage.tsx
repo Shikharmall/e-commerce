@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom'
 import { PageHero, CartContent } from '../components'
 
 const CartPage = () => {
-
-  //const { cart } = useCartContext()
-
+  
   const [refresh,setRefresh] = useState<string[] | null>(null);
 
   const makerefresh = ()=>{

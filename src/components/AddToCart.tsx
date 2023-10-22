@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { productDataType } from '../utils/productData'
-import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
 import { itemDataType } from '../utils/itemData'
 import { addItemInCart } from '../cartlogic/CartLogic'
 
 const AddToCart: React.FC<{ singleProduct: itemDataType []}> = ({singleProduct}) => {
-  //const { addToCart } = useCartContext()
-  //need the number of stock here as well after setting up in productData array
-  //const { id ,} = { ...singleProduct }
   const [amount, setAmount] = useState(1)
 
   // if there's stock variable, add logic to allow adding the amount === stock

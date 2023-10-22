@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
-//import axios from 'axios'
-import { useCartContext } from '../context/cart_context'
-import { formatPrice } from '../utils/helpers'
-//import { useHistory } from 'react-router-dom'
+import { CardElement} from '@stripe/react-stripe-js'
 import styled from 'styled-components'
 // Billing info and style from Stripe YouTube tutorial
 import Row from './Row'
 import BillingDetailsFields from './BillingDetailsFields'
 
 export const CheckoutForm = () => {
-  //const { cart } = useCartContext()
   const totallll = localStorage.getItem('totalll');
   const [succeeded, setSucceeded] = useState(false) // if the payment succeeded
   const [error, setError] = useState('') // error message
@@ -79,14 +74,6 @@ export const CheckoutForm = () => {
           <li>MM/YY: 22/22</li>
           <li>CVC: 222</li>
         </TestCardDetails>
-
-        <Row>
-          {/*<CardElement
-            id='card-element'
-            options={cardStyle}
-            //onChange={handleChange}
-  /        >*/}
-        </Row>
 
         {/* Show any error that happens when processing the payment */}
         {error ?? (

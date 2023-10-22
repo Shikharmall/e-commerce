@@ -9,9 +9,6 @@ import { cartDataType } from '../utils/cartData'
 import { removeItemInCart } from '../cartlogic/CartLogic'
 
 const CartItem: React.FC<{ cartItem: cartDataType ,makerefresh1: ()=>void }> = ({ cartItem, makerefresh1 }) => {
-  //const { id, image, title, price, amount /*, slug */} = cartItem
-
-  //const { removeItem, toggleAmount } = useCartContext()
 
   const increase: () => void = () => {
     //toggleAmount(id, 'inc')

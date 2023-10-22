@@ -1,32 +1,10 @@
 import React, { useEffect ,useState} from 'react'
 import styled from 'styled-components'
 import { Filters, ProductList, Sort, PageHero } from '../components'
-import { useFilterContext } from '../context/filter_context'
 import { itemDataType } from '../utils/itemData'
 import { getAllProducts } from '../api/AllProducts'
 
 const ProductsPage = () => {
-
-  const { clearFilters, isClickFromServices, resetIsClickFromServices } = useFilterContext();
-
-  useEffect(() => {
-    if (isClickFromServices) {
-      // if this page mounts because clicking a button in Services, should not run clearFilters()
-      // no set time out is needed to reset the variable
-      resetIsClickFromServices()
-    } else {
-      // when component mounts clear the filter
-      clearFilters()
-    }
-    // eslint-disable-next-line
-  }, []);
-
-
-  //type FiltersProps = {
-  //  searchbynamefunc1: (value: string) => Promise<void>;
-  //  searchbyname1: string; // Assuming searchbyname is a string
-  //  // ... other props
-  //};
 
   const [searchbyname,setSearchbyname] = useState<string>("");
 
@@ -51,8 +29,6 @@ const ProductsPage = () => {
       console.log(error);
     }
   };
-
-  //console.log(searchbycat);
 
   const clearall = async(value: string) => {
     try {
