@@ -1,10 +1,9 @@
 import React from 'react'
-import logo from '../../assets/logo_white.png'
+import logo from '../../assets/bnblogo.jpg'
 import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 
 export const SidebarHeader: React.FC<{handleclose1: ()=>void}> = ({handleclose1}) => {
-  //const { closeSidebar } = useProductsContext()
   return (
     <div className='sidebar-header'>
       <Link to='/' onClick={handleclose1}>
