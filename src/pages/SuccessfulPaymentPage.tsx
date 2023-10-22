@@ -1,18 +1,15 @@
 import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { useCartContext } from '../context/cart_context'
 
 
 const SuccessfulPayment = () => {
 
-  const { clearCart } = useCartContext()
 
   // clear the cart when the page mounts
   // assume only successful payment will route to this page
   useEffect(()=>{
-    clearCart()
-    //eslint-disable-next-line
+    localStorage.clear();
   }, [])
 
   return (
