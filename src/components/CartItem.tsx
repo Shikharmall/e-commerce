@@ -1,21 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { formatPrice } from '../utils/helpers'
-import AmountButtons from './AmountButtons'
 import { FaTrash } from 'react-icons/fa'
-import { cartType, useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
 import { cartDataType } from '../utils/cartData'
 import { removeItemInCart } from '../cartlogic/CartLogic'
 
 const CartItem: React.FC<{ cartItem: cartDataType ,makerefresh1: ()=>void }> = ({ cartItem, makerefresh1 }) => {
-
-  const increase: () => void = () => {
-    //toggleAmount(id, 'inc')
-  }
-  const decrease: () => void = () => {
-    //toggleAmount(id, 'dec')
-  }
 
   return (
     <Wrapper>
@@ -32,7 +22,6 @@ const CartItem: React.FC<{ cartItem: cartDataType ,makerefresh1: ()=>void }> = (
       <div className='price'>₹ {Number(cartItem.price)}</div>
       {/* quantity column */}
       <div className='price'>{Number(cartItem.amount)} qty.</div>
-      {/*<AmountButtons amount={Number(cartItem.amount)} increase={increase} decrease={decrease} />*/}
       {/* subtotal column */}
       <h5 className='subtotal'>₹ {(Number(cartItem.price) * Number(cartItem.amount))}</h5>
 
