@@ -36,8 +36,6 @@ function App() {
 
 export default App
 
-
-
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
